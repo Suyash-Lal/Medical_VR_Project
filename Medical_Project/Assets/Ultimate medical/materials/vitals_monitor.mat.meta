@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cc9cea63afcc1a8418736bf8bb2176f2
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 242850
+  packageName: Ultimate Medical (130+)
+  packageVersion: 1.0
+  assetPath: Assets/Ultimate medical/materials/vitals_monitor.mat
+  uploadId: 688085
