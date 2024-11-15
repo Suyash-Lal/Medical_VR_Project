@@ -1,0 +1,2 @@
+D:\Momentive_helmet-detection-yolov8\Spider\Medical_VR_Project\Medical_Project\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+D:\Momentive_helmet-detection-yolov8\Spider\Medical_VR_Project\Medical_Project\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt

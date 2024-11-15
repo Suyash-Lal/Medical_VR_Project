@@ -1,0 +1,10 @@
+# ninja log v5
+1	1525	7533703708205869	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	cf1a6b025324a3d4
+109	1652	7533703709388314	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	d4e2332dbf1e3817
+90	1699	7533703709408425	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	c5fe581bd7e39584
+128	1771	7533703710711437	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	aab2f1e174539584
+67	1780	7533703710806489	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	72e6df931f4cc970
+48	1821	7533703710949294	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	564cc0a8ab608b83
+15	1853	7533703711466477	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	74b06d4680902357
+32	1946	7533703712386329	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	24e96c66202e05f3
+1947	2128	7533703714137642	D:/Momentive_helmet-detection-yolov8/Spider/Medical_VR_Project/Medical_Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/Debug/653cv1k5/obj/arm64-v8a/libgame.so	ce56b30aba4f104
