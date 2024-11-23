@@ -1,0 +1,10 @@
+# ninja log v5
+20	3083	7540612552986506	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	191f1de1c624eb6c
+45	3103	7540612553186512	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	90339e091d59c1bd
+13	3123	7540612553406512	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	589ba64601a1223f
+53	3148	7540612553656503	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	c94c66a646d2b827
+36	3197	7540612554166507	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	2c966a07fbacd143
+1	3245	7540612554576518	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	1908b8288d705470
+28	3360	7540612555826518	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	a67b5e06e3bd4ae0
+7	3432	7540612556566463	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	a5909735cac58cb6
+3432	3609	7540612558332217	C:/GitHub Repos/Medical_VR_Project/unityLibrary/build/intermediates/cxx/Debug/59236n1x/obj/arm64-v8a/libgame.so	2bce0994515ca338

@@ -17,7 +17,7 @@ PlayerSettings:
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
-  m_ShowUnitySplashScreen: 1
+  m_ShowUnitySplashScreen: 0
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
   m_SplashScreenAnimation: 1
@@ -144,8 +144,10 @@ PlayerSettings:
   preloadedAssets:
   - {fileID: 11400000, guid: 1481cac4ca6939c48abf0d6b56c997fd, type: 2}
   - {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 0acb762f6582b2d4d97448b056c1f5f5, type: 2}
   - {fileID: 2819034243409422164, guid: be5827f56f40ed44bbbdbbd77a6722b2, type: 2}
-  - {fileID: 11400000, guid: cb55a9973483d634ea94b834bb7976c9, type: 2}
+  - {fileID: -2523399562930730759, guid: 6229b613958cf114bb183b6bec17b5c5, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -940,7 +942,7 @@ PlayerSettings:
   qnxGraphicConfPath: 
   apiCompatibilityLevel: 6
   captureStartupLogs: {}
-  activeInputHandler: 2
+  activeInputHandler: 1
   windowsGamepadBackendHint: 0
   cloudProjectId: 559b1009-cdb6-49b1-ae1d-28dd9b2b93d7
   framebufferDepthMemorylessMode: 0

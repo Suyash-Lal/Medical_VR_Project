@@ -1,0 +1,2 @@
+C:\GitHub Repos\Medical_VR_Project\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\GitHub Repos\Medical_VR_Project\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt
