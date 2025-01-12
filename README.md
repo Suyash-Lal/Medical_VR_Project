@@ -32,7 +32,6 @@ This repository contains the **CPR Simulation VR Project**, developed in Unity. 
 
 ## Future Scope
 
-- Implementation of haptic feedback behavior using Arduino
 - Integration of guided tutorials to teach the CPR process step-by-step.
 - Implementation of a scoring system to evaluate user performance.
 - Expansion to include other life-saving procedures in the simulation.
