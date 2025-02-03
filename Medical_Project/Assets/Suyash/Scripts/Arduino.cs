@@ -1,9 +1,10 @@
 using System.IO.Ports; // Required for serial communication
 using UnityEngine;
+using UnityEngine.InputSystem; // Required for the new Input System
 
 public class ArduinoController : MonoBehaviour
 {
-    public string portName = "COM3"; // Replace with your Arduino's COM port
+    public string portName = "COM5"; // Replace with your Arduino's COM port
     public int baudRate = 9600;     // Must match the baud rate in the Arduino code
 
     private SerialPort arduinoPort;
@@ -26,13 +27,13 @@ public class ArduinoController : MonoBehaviour
     {
         if (arduinoPort.IsOpen)
         {
-            // Example condition: Pressing "1" key sends '1' to turn on the motor, "0" key sends '0' to turn off
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            // Using new Input System for keypress detection
+            if (Keyboard.current.digit1Key.wasPressedThisFrame)
             {
                 arduinoPort.Write("1");
                 Debug.Log("Sent: 1");
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha0))
+            else if (Keyboard.current.digit0Key.wasPressedThisFrame)
             {
                 arduinoPort.Write("0");
                 Debug.Log("Sent: 0");
