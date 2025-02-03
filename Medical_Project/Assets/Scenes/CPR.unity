@@ -14311,7 +14311,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Interactable: {fileID: 1128479821}
   Affected: {fileID: 14761190}
-  scale: 1
 --- !u!1 &2046312235
 GameObject:
   m_ObjectHideFlags: 0
@@ -16848,7 +16847,7 @@ Transform:
   m_GameObject: {fileID: 1717954560228418009}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.128, y: -1.552, z: -1.642}
+  m_LocalPosition: {x: -1.881, y: -1.552, z: -2.392}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
