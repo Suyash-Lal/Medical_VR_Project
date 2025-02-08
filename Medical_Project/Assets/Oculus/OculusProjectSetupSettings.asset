@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boolProperties:
     keys:
-    - OVRProjectSetup.OVRProjectSetup.OVRConfigurationTask.02ea7d67ac3690556fd74295df61450b.Ignored.Android
     - OVRProjectSetup.OVRProjectSetup.OVRConfigurationTask.52a8c9d8e26fa135632224a3bf5db520.Ignored.Android
-    values: 0101
+    values: 01
   intProperties:
     keys: []
     values: 
