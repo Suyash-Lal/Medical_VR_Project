@@ -214,7 +214,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14761189}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -393,7 +393,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 33720535}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01e6ba7bd5f566547bd6581a284c0a9f, type: 3}
   m_Name: 
@@ -1442,7 +1442,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &231251065
 Transform:
   m_ObjectHideFlags: 0
@@ -2497,7 +2497,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &409722258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3275,6 +3275,37 @@ Transform:
   - {fileID: 1119705944}
   - {fileID: 961000024}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &472251730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 472251731}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &472251731
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472251730}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1119705944}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &476888640
 GameObject:
@@ -7218,7 +7249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &904589091
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8071,7 +8102,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1057696356}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -8521,6 +8552,7 @@ RectTransform:
   - {fileID: 1458738430}
   - {fileID: 881543878}
   - {fileID: 2035160558}
+  - {fileID: 472251731}
   m_Father: {fileID: 471829104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -12601,7 +12633,7 @@ GameObject:
   - component: {fileID: 1792281615}
   - component: {fileID: 1792281614}
   m_Layer: 0
-  m_Name: Pressure_Interactor_Safe
+  m_Name: Pressure_Interactor_Depth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12854,7 +12886,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 126
+  m_Constraints: 90
   m_CollisionDetection: 1
 --- !u!1 &1802925220
 GameObject:
@@ -13044,7 +13076,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1836769928
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14334,16 +14366,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pressureIndicator: {fileID: 904589091}
-  firstButton: {fileID: 1792281616}
-  secondButton: {fileID: 409722260}
-  firstButtonTransform: {fileID: 1128479821}
-  secondButtonTransform: {fileID: 126017282}
-  firstButtonRigidbody: {fileID: 1128479824}
-  secondButtonRigidbody: {fileID: 126017285}
-  pressedPositionYFirst: -0.05
-  pressedPositionYSecond: -0.1
-  maxIndicatorYChangeFirst: 200
-  amplificationFactor: 5
+  button: {fileID: 1792281616}
+  buttonTransform: {fileID: 1128479821}
+  buttonRigidbody: {fileID: 1128479824}
+  buttonJoint: {fileID: 0}
+  restPositionY: 0
+  pressedPositionY: -0.05
+  maxIndicatorYChange: 200
+  amplificationFactor: 3
+  smoothingFactor: 15
+  returnSpeed: 5
+  useDirectInteraction: 1
+  buttonSpringForce: 100
+  buttonDamping: 10
+  bodyRenderer: {fileID: 4651766053001197181}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  insufficientColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  sufficientColor: {r: 0, g: 1, b: 0, a: 1}
+  excessiveColor: {r: 1, g: 0, b: 0, a: 1}
+  insufficientThreshold: 0.3
+  sufficientThreshold: 0.5
+  excessiveThreshold: 0.8
 --- !u!114 &2038075164
 MonoBehaviour:
   m_ObjectHideFlags: 0
