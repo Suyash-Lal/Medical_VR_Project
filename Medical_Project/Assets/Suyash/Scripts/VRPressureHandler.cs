@@ -9,6 +9,7 @@ public class VRPressureHandler : MonoBehaviour
     public RectTransform pressureIndicator; // UI indicator showing pressure level
     public float indicatorStartY = 0f; // Manual override for starting Y position
     public bool forceStartPosition = true; // Force a specific start position
+    public Image dangerPanel; // Reference to the Danger UI panel
 
     [Header("Button Configuration")]
     public XRBaseInteractable button; // The XR interactable button for CPR
@@ -33,11 +34,10 @@ public class VRPressureHandler : MonoBehaviour
 
     [Header("Visual Feedback")]
     public Renderer bodyRenderer; // Reference to the body mesh renderer
-    public Color normalColor = Color.white; // Default color
-    public Color insufficientColor = Color.yellow; // Insufficient pressure color
-    public Color sufficientColor = Color.green; // Sufficient pressure color
-    public Color excessiveColor = Color.red; // Excessive pressure color
-
+    public Material normalMaterial; // Default material
+    public Material insufficientMaterial; // Insufficient pressure material
+    public Material sufficientMaterial; // Sufficient pressure material
+    public Material excessiveMaterial; // Excessive pressure material
     [Range(0f, 1f)]
     public float insufficientThreshold = 0.3f; // Below this is insufficient
     [Range(0f, 1f)]
@@ -132,8 +132,13 @@ public class VRPressureHandler : MonoBehaviour
             // Set up visual materials
             if (bodyRenderer != null)
             {
-                bodyMaterial = bodyRenderer.material;
-                bodyMaterial.color = normalColor;
+                bodyRenderer.material = excessiveMaterial; // Start with red at rest
+            }
+
+            // Set up Danger panel initial color
+            if (dangerPanel != null)
+            {
+                dangerPanel.color = excessiveMaterial.color; // Start with the same color as body
             }
 
             // Set up interaction events
@@ -149,12 +154,15 @@ public class VRPressureHandler : MonoBehaviour
                 return;
             }
 
-            initialized = true;
-            Debug.Log("VRPressureHandler initialized successfully");
-
             // Force an initial update to position indicator correctly
             currentPressDepth = 0;
             UpdateIndicatorPosition();
+
+            // Force initial normalized depth to be 0
+            lastButtonY = restPositionY;
+
+            initialized = true;
+            Debug.Log("VRPressureHandler initialized successfully");
         }
         catch (System.Exception e)
         {
@@ -277,13 +285,24 @@ public class VRPressureHandler : MonoBehaviour
         // Calculate normalized press depth (0 = rest, 1 = fully pressed)
         float rawDepth = Mathf.InverseLerp(restPositionY, pressedPositionY, currentY);
 
+        // Safety check: if button is very close to rest position, force rawDepth to 0
+        if (Mathf.Abs(currentY - restPositionY) < 0.001f)
+        {
+            rawDepth = 0f;
+        }
+
         // Apply amplification and clamp to 0-1 range
         float targetDepth = Mathf.Clamp01(rawDepth * amplificationFactor);
+
+        // Force initial frames to have zero depth to avoid false readings at startup
+        if (Time.timeSinceLevelLoad < 0.5f)
+        {
+            targetDepth = 0f;
+        }
 
         // Update current depth with either immediate or smooth change
         if (positionChanged || isBeingInteracted)
         {
-
             // More responsive during interaction or significant movement
             float lerpSpeed = isBeingInteracted ? 0.8f : Time.deltaTime * smoothingFactor;
             currentPressDepth = Mathf.Lerp(currentPressDepth, targetDepth, lerpSpeed);
@@ -341,24 +360,40 @@ public class VRPressureHandler : MonoBehaviour
 
     private void UpdateBodyColor()
     {
-        if (bodyMaterial == null || bodyRenderer == null) return;
+        if (bodyRenderer == null) return;
 
-        // Apply color based on pressure thresholds
+        // Determine which material to use based on thresholds
+        Material materialToUse;
+        Color colorToUse;
+
         if (currentPressDepth >= excessiveThreshold)
         {
-            bodyMaterial.color = excessiveColor; // Too much pressure (red)
+            materialToUse = normalMaterial;
+            colorToUse = normalMaterial.color;
         }
         else if (currentPressDepth >= sufficientThreshold)
         {
-            bodyMaterial.color = sufficientColor; // Correct pressure (green)
+            materialToUse = insufficientMaterial;
+            colorToUse = insufficientMaterial.color;
         }
         else if (currentPressDepth >= insufficientThreshold)
         {
-            bodyMaterial.color = insufficientColor; // Not enough pressure (yellow)
+            materialToUse = sufficientMaterial;
+            colorToUse = sufficientMaterial.color;
         }
         else
         {
-            bodyMaterial.color = normalColor; // No significant pressure
+            materialToUse = excessiveMaterial;
+            colorToUse = excessiveMaterial.color;
+        }
+
+        // Apply to body renderer
+        bodyRenderer.material = materialToUse;
+
+        // Apply to Danger panel if it exists
+        if (dangerPanel != null)
+        {
+            dangerPanel.color = colorToUse;
         }
     }
 
@@ -392,9 +427,14 @@ public class VRPressureHandler : MonoBehaviour
             pressureIndicator.anchoredPosition = initialIndicatorPosition;
         }
 
-        if (bodyMaterial != null)
+        if (bodyRenderer != null)
         {
-            bodyMaterial.color = normalColor;
+            bodyRenderer.material = excessiveMaterial; // Reset to initial material (red at rest)
+        }
+
+        if (dangerPanel != null)
+        {
+            dangerPanel.color = excessiveMaterial.color; // Reset to initial color
         }
 
         currentPressDepth = 0f;
@@ -411,7 +451,6 @@ public class VRPressureHandler : MonoBehaviour
         }
     }
 
-    // Optional: Visualize debug info on screen
     void OnGUI()
     {
         if (!showDebugInfo || !initialized) return;
@@ -427,15 +466,15 @@ public class VRPressureHandler : MonoBehaviour
         GUI.backgroundColor = Color.gray;
         GUI.Box(new Rect(20, 85, 200, 20), "");
 
-        // Color based on thresholds
+        // Color based on thresholds - completely reversed
         if (currentPressDepth >= excessiveThreshold)
-            GUI.backgroundColor = excessiveColor;
+            GUI.backgroundColor = normalMaterial.color;
         else if (currentPressDepth >= sufficientThreshold)
-            GUI.backgroundColor = sufficientColor;
+            GUI.backgroundColor = insufficientMaterial.color;
         else if (currentPressDepth >= insufficientThreshold)
-            GUI.backgroundColor = insufficientColor;
+            GUI.backgroundColor = sufficientMaterial.color;
         else
-            GUI.backgroundColor = normalColor;
+            GUI.backgroundColor = excessiveMaterial.color;
 
         GUI.Box(new Rect(20, 85, 200 * currentPressDepth, 20), "");
     }
