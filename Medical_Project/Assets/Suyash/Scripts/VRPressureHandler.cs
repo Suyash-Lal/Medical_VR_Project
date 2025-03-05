@@ -59,6 +59,12 @@ public class VRPressureHandler : MonoBehaviour
     private float lastButtonY; // Last recorded button Y position
     private bool hasLoggedInitialPositions = false; // Flag to log initial positions once
 
+    // Add this public property to access the currentPressDepth
+    public float CurrentPressDepth
+    {
+        get { return currentPressDepth; }
+    }
+
     void Awake()
     {
         initialIndicatorPosition = Vector2.zero;
